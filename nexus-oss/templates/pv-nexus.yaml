@@ -3,7 +3,7 @@ kind: PersistentVolume
 metadata:
   name: nexus-pv
 spec:
-  storageClassName: gp3-csi
+  storageClassName: gp2
   capacity:
     storage: 10Gi
   accessModes:
