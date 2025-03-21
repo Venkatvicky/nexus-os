@@ -28,7 +28,7 @@ spec:
               value: {{ .Values.postgresql.password }}
           volumeMounts:
             - name: postgresql-data
-              mountPath: "/var/lib/postgresql/data"
+              mountPath: "/mnt/data/postgresql"
       volumes:
         - name: postgresql-data
           persistentVolumeClaim:
