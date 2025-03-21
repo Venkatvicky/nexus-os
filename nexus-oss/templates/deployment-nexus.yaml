@@ -28,7 +28,7 @@ spec:
               value: {{ .Values.postgresql.password }}
           volumeMounts:
             - name: nexus-data
-              mountPath: "/nexus-data"
+              mountPath: "/mnt/data/nexus"
       volumes:
         - name: nexus-data
           persistentVolumeClaim:
