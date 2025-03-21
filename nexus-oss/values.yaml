@@ -1,0 +1,23 @@
+nexus:
+  image: sonatype/nexus3:latest
+  service:
+    type: LoadBalancer
+    port: 8081
+  storage:
+    size: 10Gi
+
+postgresql:
+  image: postgres:15
+  username: nexus
+  password: nexuspassword
+  database: nexusdb
+  service:
+    type: ClusterIP
+    port: 5432
+  storage:
+    size: 5Gi
+
+ingress:
+  enabled: true
+  host: nexus.example.com
+  tls: false

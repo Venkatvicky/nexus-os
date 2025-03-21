@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nexus-config
+  labels:
+    app: nexus
+
+data:
+  NEXUS_HOME: "/nexus-data"
