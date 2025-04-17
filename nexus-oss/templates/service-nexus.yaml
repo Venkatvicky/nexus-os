@@ -2,11 +2,14 @@ apiVersion: v1
 kind: Service
 metadata:
   name: nexus
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: "external"                     # Use NLB (not ELB)
+    service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"      # Make it public
 spec:
+  type: LoadBalancer
   selector:
     app: nexus
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 80
-  type: LoadBalancer
+      targetPort: 8081  # Assuming Nexus is running on port 8081 inside the container
