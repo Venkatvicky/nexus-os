@@ -4,9 +4,13 @@ metadata:
   name: nexus-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
+  ingressClassName: nginx
   rules:
-    - host: {{ .Values.ingress.host }}
+    - host: nexus.cloudmasa.com
       http:
         paths:
           - path: /
@@ -16,3 +20,7 @@ spec:
                 name: nexus
                 port:
                   number: 8081
+  tls:
+    - hosts:
+        - nexus.cloudmasa.com
+      secretName: nexus-tls
