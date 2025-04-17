@@ -4,7 +4,8 @@ metadata:
   name: nexus
   annotations:
     service.beta.kubernetes.io/aws-load-balancer-type: "external"                     # Use NLB (not ELB)
-    service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"      # Make it public
+    service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing" 
+    service.beta.kubernetes.io/aws-load-balancer-eip-allocations: "eipalloc-0d9319bec53a522f7,eipalloc-085c4682c4a0b6cb4"# Make it public
 spec:
   type: LoadBalancer
   selector:
