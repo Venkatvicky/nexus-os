@@ -19,5 +19,14 @@ postgresql:
 
 ingress:
   enabled: true
-  host: nexus.example.com
-  tls: false
+  ingressClassName: nginx
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  host: nexus.cloudmasa.com
+  tls:
+    - hosts:
+        - nexus.cloudmasa.com
+      secretName: nexus-tls
